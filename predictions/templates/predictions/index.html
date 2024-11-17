@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EURO 2024 Match Predictions - Group A</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+            background: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        h1 {
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .match-form {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .match {
+            padding: 25px;
+            background: #fff;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .match:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        h3 {
+            color: #1a1a1a;
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+        label {
+            font-weight: 500;
+            color: #333;
+            margin: 0 15px;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .flag-icon {
+            width: 24px;
+            height: 16px;
+            border-radius: 2px;
+            object-fit: cover;
+        }
+        .score-inputs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        input[type="number"] {
+            width: 60px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            text-align: center;
+            transition: all 0.2s ease;
+            background: #fff;
+            color: #333;
+            font-size: 1em;
+        }
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 2px rgba(37,99,235,0.1);
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #1d4ed8;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 30px 0;
+            font-size: 1em;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        thead {
+            background: #f8f9fa;
+            color: #333;
+            font-weight: 600;
+        }
+        tbody tr {
+            transition: all 0.2s ease;
+        }
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+        tbody tr:nth-child(even) {
+            background: #fafafa;
+        }
+        .team-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+        .venue {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        .rules-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            width: 100%;
+        }
+        .rules-title {
+            font-size: 1.5em;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .rule-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .rule-item:last-child {
+            border-bottom: none;
+        }
+        .rule-icon {
+            font-size: 1.2em;
+        }
+        .rule-text {
+            flex: 1;
+        }
+        .rule-points {
+            font-weight: 600;
+            color: #2563eb;
+        }
+        .prediction-results {
+            margin-top: 40px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .prediction-result {
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            background: #f8f9fa;
+            border-left: 4px solid #ddd;
+            transition: all 0.2s ease;
+        }
+        .prediction-result.points-5 {
+            border-left-color: #22c55e;
+            background: #f0fdf4;
+        }
+        .prediction-result.points-3 {
+            border-left-color: #3b82f6;
+            background: #eff6ff;
+        }
+        .prediction-result.points-0 {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+        }
+        .result-text {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .points-5 .result-text {
+            color: #22c55e;
+        }
+        .points-3 .result-text {
+            color: #3b82f6;
+        }
+        .points-0 .result-text {
+            color: #ef4444;
+        }
+        .total-points {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            font-weight: bold;
+            font-size: 1.4em;
+            text-align: right;
+            color: #1a1a1a;
+        }
+        #total-points {
+            display: inline-block;
+            min-width: 40px;
+            text-align: center;
+            padding: 5px 15px;
+            background: #2563eb;
+            color: white;
+            border-radius: 20px;
+            margin-left: 10px;
+        }
+
+        .real-score {
+            margin-top: 10px;
+            padding: 8px;
+            background: #f0f9ff;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            color: #0369a1;
+        }
+    </style>
+    <script>
+        // Move teams object to global scope (outside DOMContentLoaded)
+        const teams = {
+            'Germany': { played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0, gd: 0, points: 0, h2h: {}, flag: 'https://flagcdn.com/de.svg' },
+            'Scotland': { played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0, gd: 0, points: 0, h2h: {}, flag: 'https://flagcdn.com/gb-sct.svg' },
+            'Hungary': { played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0, gd: 0, points: 0, h2h: {}, flag: 'https://flagcdn.com/hu.svg' },
+            'Switzerland': { played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0, gd: 0, points: 0, h2h: {}, flag: 'https://flagcdn.com/ch.svg' }
+        };
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const teams = {
+                'Germany': { played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0, gd: 0, points: 0, h2h: {}, flag: 'https://flagcdn.com/de.svg' },
+                'Scotland': { played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0, gd: 0, points: 0, h2h: {}, flag: 'https://flagcdn.com/gb-sct.svg' },
+                'Hungary': { played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0, gd: 0, points: 0, h2h: {}, flag: 'https://flagcdn.com/hu.svg' },
+                'Switzerland': { played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0, gd: 0, points: 0, h2h: {}, flag: 'https://flagcdn.com/ch.svg' }
+            };
+
+            function fetchRealScores() {
+                const csrftoken = getCookie('csrftoken');
+                
+                console.log('Fetching scores...');
+                
+                // First fetch predictions
+                fetch('{% url "predictions:get_predictions" %}', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken,
+                    }
+                })
+                .then(response => response.json())
+                .then(predData => {
+                    console.log('Predictions data:', predData);
+                    
+                    // Then fetch real scores
+                    return fetch('{% url "predictions:get_real_scores" %}', {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': csrftoken,
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Real scores data:', data);
+                        
+                        if (data.scores) {
+                            // Update real scores table and store standings
+                            const realStandings = updateRealScoresTable(data.scores);
+                            window.realStandings = realStandings;
+                            
+                            // Update the visible table to show prediction icons
+                            updateTable();
+                            
+                            // Rest of your existing code for displaying match results
+                            if (predData.predictions) {
+                                data.scores.forEach(match => {
+                                    // Add debug log
+                                    console.log('Processing match:', match);
+                                    
+                                    const matchRow = document.querySelector(`.match-row[data-match-id="${match.match_id}"]`);
+                                    console.log('Found match row:', matchRow);
+                                    console.log('Match data:', match);
+                                    console.log('Match ID:', match.match_id);
+                                    console.log('Has result:', match.has_result);
+                                    console.log('MatchRow found:', matchRow);
+
+                                    if (matchRow && match.has_result) {
+                                        // Find the corresponding prediction
+                                        const prediction = predData.predictions.find(p => p.match_id === match.match_id);
+                                        console.log('Found prediction:', prediction);
+                                        
+                                        if (!prediction) return;
+            
+                                        // Calculate result type
+                                        let resultIcon = '';
+                                        let resultClass = '';
+                                        
+                                        if (prediction.score1 === match.score1 && prediction.score2 === match.score2) {
+                                            resultIcon = '🎯';
+                                            resultClass = 'points-5';
+                                        } else if (
+                                            (prediction.score1 > prediction.score2 && match.score1 > match.score2) ||
+                                            (prediction.score1 < prediction.score2 && match.score1 < match.score2) ||
+                                            (prediction.score1 === prediction.score2 && match.score1 === match.score2)
+                                        ) {
+                                            resultIcon = '✅';
+                                            resultClass = 'points-3';
+                                        } else {
+                                            resultIcon = '❌';
+                                            resultClass = 'points-0';
+                                        }
+            
+                                        const resultDiv = matchRow.querySelector('.real-score') || document.createElement('div');
+                                        resultDiv.className = `real-score ${resultClass}`;
+                                        resultDiv.innerHTML = `
+                                            <span class="result-icon">${resultIcon}</span>
+                                            Final Score: ${match.score1} - ${match.score2}
+                                        `;
+                                        matchRow.appendChild(resultDiv);
+                                    }
+                                });
+                            }
+                        }
+                    });
+                })
+                .catch(error => console.error('Error fetching scores:', error));
+            }
+
+            // Fetch real scores initially and every 1 minutes
+            fetchRealScores();
+            setInterval(fetchRealScores, 10000);
+
+            function loadSavedPredictions() {
+                const csrftoken = getCookie('csrftoken');
+                fetch('{% url "predictions:get_predictions" %}', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken,
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.predictions) {
+                        data.predictions.forEach(pred => {
+                            const matchRow = document.querySelector(`.match-row[data-match-id="${pred.match_id}"]`);
+                            if (matchRow) {
+                                matchRow.querySelector('input[name="score_1"]').value = pred.score1;
+                                matchRow.querySelector('input[name="score_2"]').value = pred.score2;
+                            }
+                        });
+                        // Update the standings table with loaded predictions
+                        updateTable();
+                    }
+                })
+                .catch(error => console.error('Error loading predictions:', error));
+            }
+        
+            // Call the function when page loads
+            loadSavedPredictions();
+
+            const matches = [
+                { team1: 'Germany', team2: 'Scotland', score1: 'germany_score_1', score2: 'scotland_score_1', date: '14/06/2024', time: '22:00', venue: 'Allianz Arena, Munich' },
+                { team1: 'Hungary', team2: 'Switzerland', score1: 'hungary_score_1', score2: 'switzerland_score_1', date: '15/06/2024', time: '16:00', venue: 'RheinEnergieStadion, Cologne' },
+                { team1: 'Germany', team2: 'Hungary', score1: 'germany_score_2', score2: 'hungary_score_2', date: '19/06/2024', time: '19:00', venue: 'MHP Arena, Stuttgart' },
+                { team1: 'Scotland', team2: 'Switzerland', score1: 'scotland_score_2', score2: 'switzerland_score_2', date: '19/06/2024', time: '22:00', venue: 'RheinEnergieStadion, Cologne' },
+                { team1: 'Switzerland', team2: 'Germany', score1: 'switzerland_score_3', score2: 'germany_score_3', date: '23/06/2024', time: '22:00', venue: 'Walstadion, Frankfurt' },
+                { team1: 'Scotland', team2: 'Hungary', score1: 'scotland_score_3', score2: 'hungary_score_3', date: '23/06/2024', time: '22:00', venue: 'MHP Arena, Stuttgart' }
+            ];
+
+            
+
+
+            function updateTable() {
+                const tbody = document.querySelector('tbody');
+                const matchRows = document.querySelectorAll('.match-row');
+                const teamStats = {};
+
+                // Initialize team stats
+                for (const team in teams) {
+                    teamStats[team] = {
+                        played: 0, won: 0, drawn: 0, lost: 0,
+                        gf: 0, ga: 0, gd: 0, points: 0,
+                        flag: teams[team].flag
+                    };
+                }
+
+                // Count completed matches in real scores
+                const completedMatches = window.realStandings ? realScoresData.scores.filter(match => match.has_result).length : 0;
+                const allMatchesCompleted = completedMatches === 6;
+
+                // Single pass through matches to calculate stats
+                matchRows.forEach(matchRow => {
+                    const score1 = parseInt(matchRow.querySelector('input[name="score_1"]').value) || 0;
+                    const score2 = parseInt(matchRow.querySelector('input[name="score_2"]').value) || 0;
+                    
+                    if (matchRow.querySelector('input[name="score_1"]').value === '' || 
+                        matchRow.querySelector('input[name="score_2"]').value === '') {
+                        return;
+                    }
+
+                    const matchId = matchRow.getAttribute('data-match-id');
+                    const match = matches.find(m => 
+                        `${m.team1.substring(0,3).toUpperCase()}_${m.team2.substring(0,3).toUpperCase()}` === matchId
+                    );
+                    if (!match) return;
+
+                    const team1 = match.team1;
+                    const team2 = match.team2;
+
+                    // Update stats in a single pass
+                    teamStats[team1].played++;
+                    teamStats[team2].played++;
+                    teamStats[team1].gf += score1;
+                    teamStats[team2].gf += score2;
+                    teamStats[team1].ga += score2;
+                    teamStats[team2].ga += score1;
+
+                    if (score1 > score2) {
+                        teamStats[team1].won++;
+                        teamStats[team2].lost++;
+                        teamStats[team1].points += 3;
+                    } else if (score1 < score2) {
+                        teamStats[team2].won++;
+                        teamStats[team1].lost++;
+                        teamStats[team2].points += 3;
+                    } else {
+                        teamStats[team1].drawn++;
+                        teamStats[team2].drawn++;
+                        teamStats[team1].points++;
+                        teamStats[team2].points++;
+                    }
+                });
+
+                // Calculate GD once
+                Object.values(teamStats).forEach(stats => {
+                    stats.gd = stats.gf - stats.ga;
+                });
+
+                // Sort teams
+                const sortedTeams = Object.entries(teamStats)
+                    .sort(([, a], [, b]) => b.points - a.points || b.gd - a.gd || b.gf - a.gf);
+
+                // Build table HTML
+                const tableHTML = sortedTeams.map(([team, stats], index) => {
+                    // Only show prediction icons if all matches are completed
+                    let predictionIcon = '';
+                    if (allMatchesCompleted && window.realStandings && window.realStandings.length > 0) {
+                        if (index < 2) {  // Team is predicted to qualify
+                            const realPosition = window.realStandings.findIndex(([realTeam]) => realTeam === team);
+                            if (realPosition < 2) {  // Team actually qualified
+                                predictionIcon = index === realPosition ? '🎯' : '✅';
+                            } else {  // Team didn't qualify
+                                predictionIcon = '❌';
+                            }
+                        }
+                    }
+
+                    return `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td class="team-name">
+                                <img src="${stats.flag}" class="flag-icon" alt="${team} flag">
+                                ${team}
+                            </td>
+                            <td>${stats.played}</td>
+                            <td>${stats.won}</td>
+                            <td>${stats.drawn}</td>
+                            <td>${stats.lost}</td>
+                            <td>${stats.gf}</td>
+                            <td>${stats.ga}</td>
+                            <td>${stats.gd}</td>
+                            <td>${stats.points}</td>
+                            <td>${predictionIcon}</td>
+                        </tr>
+                    `;
+                }).join('');
+
+                tbody.innerHTML = tableHTML;
+            }
+
+            // Update event listeners
+            document.addEventListener('DOMContentLoaded', function() {
+                updateTable();
+                
+                // Use event delegation instead of multiple listeners
+                document.querySelector('.match-form').addEventListener('input', function(e) {
+                    if (e.target.type === 'number') {
+                        requestAnimationFrame(updateTable);
+                    }
+                });
+            });
+
+            // Add this function to get CSRF token
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
+            // Update your form submission handling
+            document.querySelector('.match-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                
+                // Add console log to see what's being collected
+                console.log('Form submitted');
+                
+                const predictions = {};
+                document.querySelectorAll('.match-row').forEach((row, index) => {
+                    const matchId = row.getAttribute('data-match-id');
+                    const score1Input = row.querySelector('input[name="score_1"]').value;
+                    const score2Input = row.querySelector('input[name="score_2"]').value;
+                    
+                    console.log(`Match ${matchId}:`, score1Input, score2Input);  // Debug log
+                    
+                    if (score1Input !== '' && score2Input !== '') {
+                        predictions[matchId] = {
+                            score1: parseInt(score1Input),
+                            score2: parseInt(score2Input)
+                        };
+                    }
+                });
+
+                console.log('Sending predictions:', predictions);  // Debug log
+
+                const csrftoken = getCookie('csrftoken');
+                fetch('{% url "predictions:submit_predictions" %}', {  // Updated URL
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken,
+                    },
+                    body: JSON.stringify({
+                        predictions: predictions
+                    })
+                })
+                .then(response => {
+                    console.log('Response status:', response.status);  // Debug log
+                    if (!response.ok) {
+                        return response.text().then(text => {
+                            throw new Error(`Server responded with ${response.status}: ${text}`);
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        console.log('Success response:', data);  // Debug log
+                        alert('Predictions saved successfully!');
+                        if (data.predictions) {
+                            displayPredictionResults(data);
+                        }
+                    } else {
+                        console.error('Error response:', data);  // Debug log
+                        alert(`Error: ${data.error || 'Unknown error occurred'}`);
+                    }
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);  // Debug log
+                    alert(`Error: ${error.message}`);
+                });
+            });
+            
+
+            // Initial table update
+            updateTable();
+
+            // Add this at the end of the DOMContentLoaded function
+            // Update points every 5 minutes (300000 milliseconds)
+            setInterval(function() {
+                fetchAndCalculatePoints();
+                updateTotalPoints();
+            }, 10000);
+
+            // Initial update
+            fetchAndCalculatePoints();
+            updateTotalPoints();
+        });
+
+        function updateTotalPoints() {
+            // First, calculate standings points from prediction icons
+            const tbody = document.querySelector('tbody');
+            const rows = tbody.querySelectorAll('tr');
+            const predictionIcons = Array.from(rows).slice(0, 2).map(row => 
+                row.querySelector('td:last-child').textContent
+            );
+            
+            // Only calculate standings points if we have prediction icons
+            if (predictionIcons.some(icon => icon)) {
+                const csrftoken = getCookie('csrftoken');
+                
+                fetch('{% url "predictions:update_standings_points" %}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken,
+                    },
+                    body: JSON.stringify({
+                        prediction_icons: predictionIcons
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log('Match points:', data.match_points);
+                        console.log('Standings points:', data.standings_points);
+                        console.log('Total points:', data.total_points);
+                        document.getElementById('total-points').textContent = data.total_points;
+                    } else {
+                        console.error('Failed to update standings points:', data.error);
+                    }
+                })
+                .catch(error => console.error('Error updating standings points:', error));
+            } else {
+                // If no icons yet, just get regular match points
+                fetch('{% url "predictions:get_total_points" %}')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('total-points').textContent = data.total_points;
+                    })
+                    .catch(error => console.error('Error fetching total points:', error));
+            }
+        }
+        
+        // Call initially and after submitting predictions
+        updateTotalPoints();
+
+        // Add this to your existing script
+        function displayPredictionResults(data) {
+            const totalPointsSpan = document.getElementById('total-points');
+            totalPointsSpan.textContent = data.total_points;
+        }
+
+        // Add this new function after fetchRealScores
+        function calculateAndSavePoints(realScores, predictions) {
+            const csrftoken = getCookie('csrftoken');
+            
+            // Calculate points for each prediction and prepare data for saving
+            const pointsData = realScores.filter(match => match.has_result).map(match => {
+                const prediction = predictions.find(p => p.match_id === match.match_id);
+                if (!prediction) return null;
+
+                let points = 0;
+                if (prediction.score1 === match.score1 && prediction.score2 === match.score2) {
+                    points = 5; // Exact score
+                } else if (
+                    (prediction.score1 > prediction.score2 && match.score1 > match.score2) ||
+                    (prediction.score1 < prediction.score2 && match.score1 < match.score2) ||
+                    (prediction.score1 === prediction.score2 && match.score1 === match.score2)
+                ) {
+                    points = 3; // Correct result
+                }
+
+                return {
+                    prediction_id: prediction.id,
+                    points: points
+                };
+            }).filter(item => item !== null);
+
+            // Save calculated points if we have any
+            if (pointsData.length > 0) {
+                fetch('{% url "predictions:update_points" %}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken,
+                    },
+                    body: JSON.stringify({ points_data: pointsData })
+                })
+                .then(response => response.json())
+                .then(updateResult => {
+                    console.log('Points updated:', updateResult);
+                    // Update the display after saving points
+                    updateTotalPoints();
+                })
+                .catch(error => console.error('Error updating points:', error));
+            }
+        }
+
+        // Add this function to calculate points for a single match
+        function calculateMatchPoints(prediction, realScore) {
+            if (!prediction || !realScore) return 0;
+            
+            // Exact score match (5 points)
+            if (prediction.score1 === realScore.score1 && prediction.score2 === realScore.score2) {
+                return 5;
+            }
+            
+            // Correct result type but wrong score (3 points)
+            const predictionResult = prediction.score1 > prediction.score2 ? 'WIN' : 
+                                   prediction.score1 < prediction.score2 ? 'LOSS' : 'DRAW';
+            const realResult = realScore.score1 > realScore.score2 ? 'WIN' : 
+                              realScore.score1 < realScore.score2 ? 'LOSS' : 'DRAW';
+            
+            return predictionResult === realResult ? 3 : 0;
+        }
+
+        // Add this function to calculate standings points
+        function calculateStandingsPoints(predictedTeams, realStandings) {
+            let standingsPoints = 0;
+            
+            predictedTeams.forEach(([team, stats], index) => {
+                if (index < 2) { // Only check top 2 positions
+                    const realPosition = realStandings.findIndex(([realTeam]) => realTeam === team);
+                    if (realPosition < 2) { // Team actually qualified
+                        if (index === realPosition) {
+                            standingsPoints += 6; // Exact position match
+                        } else {
+                            standingsPoints += 4; // Qualified but wrong position
+                        }
+                    }
+                }
+            });
+            
+            return standingsPoints;
+        }
+
+        // Add this function to update match display
+        function updateMatchDisplay(realScore, prediction, points) {
+            const matchId = `${realScore.team1.substring(0,3).toUpperCase()}_${realScore.team2.substring(0,3).toUpperCase()}`;
+            const matchRow = document.querySelector(`.match-row[data-match-id="${matchId}"]`);
+            
+            if (matchRow) {
+                const resultDiv = matchRow.querySelector('.real-score') || document.createElement('div');
+                resultDiv.className = `real-score points-${points}`;
+                let resultIcon = points === 5 ? '🎯' : points === 3 ? '✅' : '❌';
+                
+                if (!matchRow.querySelector('.real-score')) {
+                    matchRow.appendChild(resultDiv);
+                }
+            }
+        }
+
+        // Modify the fetchAndCalculatePoints function
+        function fetchAndCalculatePoints() {
+            const csrftoken = getCookie('csrftoken');
+
+            Promise.all([
+                fetch('{% url "predictions:get_real_scores" %}', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken,
+                    }
+                }).then(response => response.json()),
+                fetch('{% url "predictions:get_predictions" %}', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken,
+                    }
+                }).then(response => response.json())
+            ])
+            .then(([realScoresData, predictionsData]) => {
+                if (realScoresData.scores && predictionsData.predictions) {
+                    let matchPoints = 0;
+                    let standingsPoints = 0;
+                    const pointsData = [];
+
+                    // Store real scores data globally for table use
+                    window.realScoresData = realScoresData;
+
+                    // Calculate match points and update display for each match
+                    realScoresData.scores.forEach(realScore => {
+                        if (realScore.has_result) {
+                            const prediction = predictionsData.predictions.find(p => p.match_id === realScore.match_id);
+                            if (prediction) {
+                                const points = calculateMatchPoints(prediction, realScore);
+                                matchPoints += points;
+                                pointsData.push({
+                                    prediction_id: prediction.id,
+                                    points: points
+                                });
+
+                                // Update match display with result and points
+                                updateMatchDisplay(realScore, prediction, points);
+                            }
+                        }
+                    });
+
+                    // Only calculate standings points if all 6 matches are completed
+                    const completedMatches = realScoresData.scores.filter(match => match.has_result).length;
+                    if (completedMatches === 6) {
+                        const predictedStandings = calculatePredictedStandings(predictionsData.predictions);
+                        const realStandings = calculateRealStandings(realScoresData.scores);
+                        standingsPoints = calculateStandingsPoints(predictedStandings, realStandings);
+                        
+                        pointsData.push({
+                            prediction_id: 'STANDINGS_BONUS',
+                            points: standingsPoints
+                        });
+                    }
+
+                    // Update total points display
+                    const totalPoints = matchPoints + standingsPoints;
+                    document.getElementById('total-points').textContent = totalPoints;
+
+                    // Update the table
+                    updateTable();
+                }
+            })
+            .catch(error => console.error('Error fetching data:', error));
+        }
+
+        // Add this to your DOMContentLoaded event listener
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initial points calculation
+            fetchAndCalculatePoints();
+            
+            // Update points every 10 seconds
+            setInterval(fetchAndCalculatePoints, 10000);
+        });
+
+        function updateRealScoresTable(realScores) {
+            // Similar to updateTable but for real scores
+            const realTeams = {...teams};  // Create a copy of teams object
+            
+            // Reset stats
+            for (const team in realTeams) {
+                realTeams[team].played = 0;
+                realTeams[team].won = 0;
+                realTeams[team].drawn = 0;
+                realTeams[team].lost = 0;
+                realTeams[team].gf = 0;
+                realTeams[team].ga = 0;
+                realTeams[team].gd = 0;
+                realTeams[team].points = 0;
+                realTeams[team].h2h = {};
+            }
+
+            // Update stats based on real scores
+            realScores.forEach(match => {
+                if (match.has_result) {
+                    realTeams[match.team1].played++;
+                    realTeams[match.team2].played++;
+                    realTeams[match.team1].gf += match.score1;
+                    realTeams[match.team2].gf += match.score2;
+                    realTeams[match.team1].ga += match.score2;
+                    realTeams[match.team2].ga += match.score1;
+                    
+                    if (match.score1 > match.score2) {
+                        realTeams[match.team1].won++;
+                        realTeams[match.team2].lost++;
+                        realTeams[match.team1].points += 3;
+                    } else if (match.score1 < match.score2) {
+                        realTeams[match.team2].won++;
+                        realTeams[match.team1].lost++;
+                        realTeams[match.team2].points += 3;
+                    } else {
+                        realTeams[match.team1].drawn++;
+                        realTeams[match.team2].drawn++;
+                        realTeams[match.team1].points++;
+                        realTeams[match.team2].points++;
+                    }
+                }
+            });
+
+            // Calculate GD
+            for (const team in realTeams) {
+                realTeams[team].gd = realTeams[team].gf - realTeams[team].ga;
+            }
+
+            // Sort teams using the same rules as predictions
+            const sortedRealTeams = Object.entries(realTeams).sort(([teamNameA, a], [teamNameB, b]) => {
+                if (b.points !== a.points) return b.points - a.points;
+                if (b.gd !== a.gd) return b.gd - a.gd;
+                return b.gf - a.gf;
+            });
+
+            // Store the real standings for comparison
+            window.realStandings = sortedRealTeams;
+
+            // Update hidden table
+            const tbody = document.querySelector('#real-scores-table tbody');
+            tbody.innerHTML = sortedRealTeams.map(([team, stats], index) => `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${team}</td>
+                    <td>${stats.played}</td>
+                    <td>${stats.won}</td>
+                    <td>${stats.drawn}</td>
+                    <td>${stats.lost}</td>
+                    <td>${stats.gf}</td>
+                    <td>${stats.ga}</td>
+                    <td>${stats.gd}</td>
+                    <td>${stats.points}</td>
+                </tr>
+            `).join('');
+
+            return sortedRealTeams;
+        }
+
+        // Add some CSS for the match results
+        const style = document.createElement('style');
+        style.textContent = `
+            .real-score {
+                margin-top: 10px;
+                padding: 8px;
+                border-radius: 4px;
+                text-align: center;
+            }
+            .points-5 {
+                background-color: #dcfce7;
+                color: #166534;
+            }
+            .points-3 {
+                background-color: #dbeafe;
+                color: #1e40af;
+            }
+            .points-0 {
+                background-color: #fee2e2;
+                color: #991b1b;
+            }
+            .result-icon {
+                margin-right: 8px;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</head>
+<body>
+    <h1>EURO 2024 - Group A Predictions</h1>
+
+    <div class="rules-container">
+        <h2 class="rules-title">Scoring Rules</h2>
+        <div class="rule-item">
+            <div class="rule-icon">🎯</div>
+            <div class="rule-text">Exact score prediction</div>
+            <div class="rule-points">5 points</div>
+        </div>
+        <div class="rule-item">
+            <div class="rule-icon">✅</div>
+            <div class="rule-text">Correct result (win/draw/loss) but wrong score</div>
+            <div class="rule-points">3 points</div>
+        </div>
+        <div class="rule-item">
+            <div class="rule-icon">❌</div>
+            <div class="rule-text">Incorrect result</div>
+            <div class="rule-points">0 points</div>
+        </div>
+    </div>
+    
+    <form class="match-form">
+        <div class="match match-row" data-match-id="GER_SCO">
+            <h3>14/06/2024 22:00</h3>
+            <div class="venue">Allianz Arena, Munich</div>
+            <div class="score-inputs">
+                <label><img src="https://flagcdn.com/de.svg" class="flag-icon" alt="Germany flag"> Germany</label>
+                <input type="number" min="0" name="score_1"> vs 
+                <input type="number" min="0" name="score_2">
+                <label>Scotland <img src="https://flagcdn.com/gb-sct.svg" class="flag-icon" alt="Scotland flag"></label>
+            </div>
+        </div>
+
+        <div class="match match-row" data-match-id="HUN_SWI">
+            <h3>15/06/2024 16:00</h3>
+            <div class="venue">RheinEnergieStadion, Cologne</div>
+            <div class="score-inputs">
+                <label><img src="https://flagcdn.com/hu.svg" class="flag-icon" alt="Hungary flag"> Hungary</label>
+                <input type="number" min="0" name="score_1"> vs 
+                <input type="number" min="0" name="score_2">
+                <label>Switzerland <img src="https://flagcdn.com/ch.svg" class="flag-icon" alt="Switzerland flag"></label>
+            </div>
+        </div>
+
+        <div class="match match-row" data-match-id="GER_HUN">
+            <h3>19/06/2024 19:00</h3>
+            <div class="venue">MHP Arena, Stuttgart</div>
+            <div class="score-inputs">
+                <label><img src="https://flagcdn.com/de.svg" class="flag-icon" alt="Germany flag"> Germany</label>
+                <input type="number" min="0" name="score_1"> vs 
+                <input type="number" min="0" name="score_2">
+                <label>Hungary <img src="https://flagcdn.com/hu.svg" class="flag-icon" alt="Hungary flag"></label>
+            </div>
+        </div>
+
+        <div class="match match-row" data-match-id="SCO_SWI">
+            <h3>19/06/2024 22:00</h3>
+            <div class="venue">RheinEnergieStadion, Cologne</div>
+            <div class="score-inputs">
+                <label><img src="https://flagcdn.com/gb-sct.svg" class="flag-icon" alt="Scotland flag"> Scotland</label>
+                <input type="number" min="0" name="score_1"> vs 
+                <input type="number" min="0" name="score_2">
+                <label>Switzerland <img src="https://flagcdn.com/ch.svg" class="flag-icon" alt="Switzerland flag"></label>
+            </div>
+        </div>
+
+        <div class="match match-row" data-match-id="SWI_GER">
+            <h3>23/06/2024 22:00</h3>
+            <div class="venue">Walstadion, Frankfurt</div>
+            <div class="score-inputs">
+                <label><img src="https://flagcdn.com/ch.svg" class="flag-icon" alt="Switzerland flag"> Switzerland</label>
+                <input type="number" min="0" name="score_1"> vs 
+                <input type="number" min="0" name="score_2">
+                <label>Germany <img src="https://flagcdn.com/de.svg" class="flag-icon" alt="Germany flag"></label>
+            </div>
+        </div>
+
+        <div class="match match-row" data-match-id="SCO_HUN">
+            <h3>23/06/2024 22:00</h3>
+            <div class="venue">MHP Arena, Stuttgart</div>
+            <div class="score-inputs">
+                <label><img src="https://flagcdn.com/gb-sct.svg" class="flag-icon" alt="Scotland flag"> Scotland</label>
+                <input type="number" min="0" name="score_1"> vs 
+                <input type="number" min="0" name="score_2">
+                <label>Hungary <img src="https://flagcdn.com/hu.svg" class="flag-icon" alt="Hungary flag"></label>
+            </div>
+        </div>
+
+        <button type="submit">Submit Predictions</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Pos</th>
+                <th>Team</th>
+                <th>Played</th>
+                <th>Won</th>
+                <th>Drawn</th>
+                <th>Lost</th>
+                <th>GF</th>
+                <th>GA</th>
+                <th>GD</th>
+                <th>Points</th>
+                <th>Prediction</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table rows will be dynamically generated here -->
+        </tbody>
+    </table>
+
+    <!-- Add this after your visible table -->
+    <table id="real-scores-table" style="display: none;">
+        <thead>
+            <tr>
+                <th>Team</th>
+                <th>Played</th>
+                <th>Won</th>
+                <th>Drawn</th>
+                <th>Lost</th>
+                <th>GF</th>
+                <th>GA</th>
+                <th>GD</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Real scores will be populated here -->
+        </tbody>
+    </table>
+
+    <div id="prediction-results" class="prediction-results">
+        <div class="total-points">
+            Total Points: <span id="total-points">0</span>
+        </div>
+    </div>
+</body>
+</html>
